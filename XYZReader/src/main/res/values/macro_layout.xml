@@ -15,4 +15,5 @@
     <dimen name="detail_body_top_margin">16dp</dimen>
     <dimen name="detail_body_top_padding">16dp</dimen>
     <dimen name="detail_body_bottom_margin">88dp</dimen>
+    <dimen name="detail_toolbar_top_margin">22dp</dimen>
 </resources>
