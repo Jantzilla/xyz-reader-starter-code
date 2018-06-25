@@ -1,27 +1,22 @@
 <com.example.xyzreader.ui.DrawInsetsFrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/draw_insets_frame_layout"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <com.example.xyzreader.ui.ObservableScrollView
-        android:id="@+id/scrollview"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/draw_insets_frame_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <FrameLayout
+    <android.support.design.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.design.widget.AppBarLayout
             android:layout_width="match_parent"
+            android:background="@color/theme_primary_dark"
             android:layout_height="wrap_content">
-
-            <com.example.xyzreader.ui.MaxWidthLinearLayout
-                android:orientation="vertical"
+            <android.support.design.widget.CollapsingToolbarLayout
+                android:id="@+id/collapser"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:maxWidth="@dimen/detail_card_max_width"
-                android:background="#fff"
-                android:elevation="2dp">
-
+                android:layout_height="match_parent"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed">
                 <FrameLayout
                     android:id="@+id/photo_container"
                     android:layout_width="match_parent"
@@ -33,14 +28,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:scaleType="centerCrop"/>
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="112dp"
-                        android:background="@drawable/photo_background_protection" />
-
                 </FrameLayout>
-
                 <LinearLayout
                     android:id="@+id/meta_bar"
                     android:layout_width="match_parent"
@@ -51,8 +39,7 @@
                     android:paddingLeft="@dimen/detail_inner_horiz_margin"
                     android:paddingRight="@dimen/detail_inner_horiz_margin"
                     android:paddingTop="@dimen/detail_metabar_vert_padding"
-                    android:paddingBottom="@dimen/detail_metabar_vert_padding"
-                    android:layout_marginBottom="@dimen/detail_metabar_vert_padding">
+                    android:paddingBottom="@dimen/detail_metabar_vert_padding">
 
                     <TextView
                         android:id="@+id/article_title"
@@ -74,6 +61,33 @@
                         android:textColor="#8fff" />
                 </LinearLayout>
 
+                <android.support.v7.widget.Toolbar
+                    android:layout_width="match_parent"
+                    android:layout_height="168dp"
+                    app:layout_collapseMode="pin"></android.support.v7.widget.Toolbar>
+            </android.support.design.widget.CollapsingToolbarLayout>
+        </android.support.design.widget.AppBarLayout>
+
+    <com.example.xyzreader.ui.ObservableScrollView
+        android:id="@+id/scrollview"
+        android:nestedScrollingEnabled="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.example.xyzreader.ui.MaxWidthLinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:maxWidth="@dimen/detail_card_max_width"
+                android:background="#fff"
+                android:elevation="2dp">
+
                 <TextView
                     android:id="@+id/article_body"
                     style="?android:attr/textAppearanceMedium"
@@ -81,6 +95,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/detail_inner_horiz_margin"
                     android:layout_marginRight="@dimen/detail_inner_horiz_margin"
+                    android:paddingTop="@dimen/detail_body_top_padding"
                     android:paddingBottom="@dimen/detail_body_bottom_margin"
                     android:textColor="@color/text_color"
                     android:textColorLink="@color/theme_accent"
@@ -90,6 +105,8 @@
             </com.example.xyzreader.ui.MaxWidthLinearLayout>
         </FrameLayout>
     </com.example.xyzreader.ui.ObservableScrollView>
+    </android.support.design.widget.CoordinatorLayout>
+
 
     <ImageButton android:id="@+id/share_fab"
         android:stateListAnimator="@animator/fab_state_list_anim"
@@ -104,3 +121,4 @@
         android:contentDescription="@string/action_share" />
 
 </com.example.xyzreader.ui.DrawInsetsFrameLayout>
+
